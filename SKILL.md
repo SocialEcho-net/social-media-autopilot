@@ -42,6 +42,7 @@ npm ci
 ## Notes
 
 - Success is defined as: HTTP 200 and response JSON `code == 200`.
+- External API rate limit: maximum `120 requests / minute` per API key.
+- If calling in loops or automation, keep request rate below limit and add retry/backoff on throttle responses.
 - Scripts print response body and exit with non-zero status on failure.
 - Use `SOCIALECHO_BASE_URL=https://api-dev.socialecho.net` for dev environment.
-
