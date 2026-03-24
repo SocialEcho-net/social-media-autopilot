@@ -1,8 +1,8 @@
 {
-  "name": "socialecho-openapi-skill",
+  "name": "social-media-autopilot",
   "version": "1.0.0",
   "type": "module",
-  "description": "CLI helpers for SocialEcho external APIs",
+  "description": "CLI helpers for Social media autopilot external APIs",
   "author": "SocialEcho Team",
   "license": "MIT",
   "scripts": {

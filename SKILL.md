@@ -1,9 +1,9 @@
 ---
-name: socialecho-openapi
-description: Query SocialEcho external APIs (team, account list, article list, report) using API key from Team Management. Use for integration checks, data pulls, and API diagnostics.
+name: social-media-autopilot
+description: Social media autopilot API skill for querying team, account list, article list, and report endpoints using team API key. Use for integration checks and data pulls.
 ---
 
-# SocialEcho OpenAPI Skill
+# Social media autopilot
 
 Use this skill to call SocialEcho external APIs with a team API key.
 
