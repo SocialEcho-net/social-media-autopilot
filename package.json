@@ -1,0 +1,15 @@
+{
+  "name": "socialecho-openapi-skill",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "CLI helpers for SocialEcho external APIs",
+  "author": "SocialEcho Team",
+  "license": "MIT",
+  "scripts": {
+    "team": "node ./team.js",
+    "account": "node ./account.js",
+    "article": "node ./article.js",
+    "report": "node ./report.js"
+  },
+  "dependencies": {}
+}
