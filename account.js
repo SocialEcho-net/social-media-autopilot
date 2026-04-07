@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-import { callApi, parseArgs, printAndExit } from "./client.js";
+import { buildRequestOptions, callApi, parseArgs, printAndExit } from "./client.js";
 
 const args = parseArgs(process.argv);
+const options = buildRequestOptions(args);
 
 const page = args.page ?? 1;
 const type = args.type ?? 1;
 
-const result = await callApi("/v1/account", { page, type });
+const result = await callApi("/v1/account", { page, type }, options);
 printAndExit(result);
-

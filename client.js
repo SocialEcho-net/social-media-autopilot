@@ -1,13 +1,5 @@
 #!/usr/bin/env node
 
-export function getEnv(name, required = true, fallback = "") {
-  const v = process.env[name] ?? fallback;
-  if (required && !v) {
-    throw new Error(`Missing env: ${name}`);
-  }
-  return v;
-}
-
 export function parseArgs(argv) {
   const args = {};
   for (let i = 2; i < argv.length; i += 1) {
@@ -25,6 +17,14 @@ export function parseArgs(argv) {
   return args;
 }
 
+export function getOption(args, name, required = true, fallback = "") {
+  const v = args[name] ?? fallback;
+  if (required && !v) {
+    throw new Error(`Missing option: --${name}`);
+  }
+  return v;
+}
+
 function buildQuery(params) {
   const usp = new URLSearchParams();
   for (const [k, v] of Object.entries(params)) {
@@ -34,11 +34,17 @@ function buildQuery(params) {
   return usp.toString();
 }
 
-export async function callApi(path, params = {}) {
-  const apiKey = getEnv("SOCIALECHO_API_KEY");
-  const baseUrl = getEnv("SOCIALECHO_BASE_URL", false, "https://api.socialecho.net");
-  const teamId = getEnv("SOCIALECHO_TEAM_ID", false, "");
-  const lang = getEnv("SOCIALECHO_LANG", false, "zh_CN");
+export function buildRequestOptions(args) {
+  return {
+    apiKey: getOption(args, "api-key"),
+    baseUrl: getOption(args, "base-url", false, "https://api.socialecho.net"),
+    teamId: getOption(args, "team-id", false, ""),
+    lang: getOption(args, "lang", false, "zh_CN")
+  };
+}
+
+export async function callApi(path, params = {}, options) {
+  const { apiKey, baseUrl, teamId, lang } = options;
 
   const qs = buildQuery(params);
   const url = `${baseUrl}${path}${qs ? `?${qs}` : ""}`;
@@ -75,4 +81,3 @@ export function printAndExit(result) {
   console.log(JSON.stringify(result, null, 2));
   if (!result.ok) process.exit(1);
 }
-

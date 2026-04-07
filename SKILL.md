@@ -12,16 +12,13 @@ Use this skill to call SocialEcho external APIs with a team API key.
 1. Sign up / sign in at `https://app.socialecho.net/`.
 2. Create a team.
 3. In Team Management, create an API key.
-4. Export env vars:
+4. Use explicit CLI options for auth/runtime (do not auto-read env vars):
+   - `--api-key` (required)
+   - `--base-url` (optional, default `https://api.socialecho.net`)
+   - `--team-id` (optional)
+   - `--lang` (optional, default `zh_CN`)
 
-```bash
-export SOCIALECHO_API_KEY="your_api_key"
-export SOCIALECHO_BASE_URL="https://api.socialecho.net"
-export SOCIALECHO_TEAM_ID="optional_team_id"
-export SOCIALECHO_LANG="zh_CN"
-```
-
-`SOCIALECHO_TEAM_ID` is optional for most calls but can be required by report queries depending on server rules.
+`--team-id` is optional for most calls but can be required by report queries depending on server rules.
 
 ## Setup
 
@@ -33,10 +30,10 @@ npm ci
 ## Commands
 
 ```bash
-./team.js
-./account.js --page 1 --type 1
-./article.js --page 1 --account-ids 41,42
-./report.js --start-date 2026-01-01 --end-date 2026-03-24 --time-type 1 --group day --account-ids 41,42
+./team.js --api-key YOUR_KEY
+./account.js --api-key YOUR_KEY --page 1 --type 1
+./article.js --api-key YOUR_KEY --page 1 --account-ids 41,42
+./report.js --api-key YOUR_KEY --start-date 2026-01-01 --end-date 2026-03-24 --time-type 1 --group day --account-ids 41,42
 ```
 
 ## Notes
@@ -45,4 +42,4 @@ npm ci
 - External API rate limit: maximum `120 requests / minute` per API key.
 - If calling in loops or automation, keep request rate below limit and add retry/backoff on throttle responses.
 - Scripts print response body and exit with non-zero status on failure.
-- Use `SOCIALECHO_BASE_URL=https://api-dev.socialecho.net` for dev environment.
+- Use `--base-url https://api-dev.socialecho.net` for dev environment.
