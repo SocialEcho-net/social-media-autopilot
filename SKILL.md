@@ -23,9 +23,11 @@ Use this skill to call SocialEcho external APIs with a team API key.
 ## Setup
 
 ```bash
-cd socialecho-openapi-skill
+cd social-media-autopilot
 npm ci
 ```
+
+Runtime requirement: Node.js `>=18`
 
 ## Commands
 
