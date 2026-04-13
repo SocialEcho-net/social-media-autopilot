@@ -43,3 +43,4 @@ npm ci
 - If calling in loops or automation, keep request rate below limit and add retry/backoff on throttle responses.
 - Scripts print response body and exit with non-zero status on failure.
 - Use `--base-url https://api-dev.socialecho.net` for dev environment.
+- OpenAPI spec: `openapi.yaml` (Swagger/OpenAPI 3.0.3, LLM-friendly descriptions and field semantics).
