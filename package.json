@@ -1,8 +1,8 @@
 {
-  "name": "social-media-autopilot",
-  "version": "1.0.2",
+  "name": "socialecho-social-media-management-agent",
+  "version": "1.0.3",
   "type": "module",
-  "description": "CLI helpers for Social media autopilot external APIs",
+  "description": "CLI helpers for SocialEcho social media management external APIs",
   "author": "SocialEcho Team",
   "license": "MIT",
   "engines": {

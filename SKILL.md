@@ -1,9 +1,9 @@
 ---
-name: social-media-autopilot
-description: Social media autopilot API skill for querying team, account list, article list, and report endpoints using team API key. Use for integration checks and data pulls.
+name: socialecho-social-media-management-agent
+description: SocialEcho social media management API skill for querying team, account list, article list, and report endpoints using team API key. Use for integration checks and data pulls.
 ---
 
-# Social media autopilot
+# SocialEcho Social Media Management Agent
 
 Use this skill to call SocialEcho external APIs with a team API key.
 
