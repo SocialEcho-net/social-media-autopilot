@@ -49,6 +49,25 @@ Runtime requirement: Node.js `>=18`
 
 `publish-article` 的请求体字段以仓库内 `openapi.json` / `openapi.yaml` 中 `POST /v1/publish/article` 为准；请准备完整 JSON 文件并通过 `--payload` 传入。
 
+## Platform publish limits (copy, media, formats)
+
+各平台文案长度、媒体数量、格式与尺寸等**发布前校验规则**见同目录 Markdown（与帮助中心内容对齐，供集成与运营参考）：
+
+| File | Language |
+| --- | --- |
+| `platform-publish-limits_cn.md` | Chinese |
+| `platform-publish-limits_en.md` | English |
+
+**CLI：在终端打印全文到 stdout（便于管道保存或查阅）：**
+
+```bash
+node ./platform-limits.js
+node ./platform-limits.js --lang en
+# 若已全局安装本包：
+# socialecho-platform-limits
+# socialecho-platform-limits --lang en
+```
+
 ## Notes
 
 - 成功判定：HTTP `200` 且响应 JSON 的 `code` 为 `200` 或 `0`（与当前对外接口约定一致）。
