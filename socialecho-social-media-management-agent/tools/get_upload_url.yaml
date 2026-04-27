@@ -3,27 +3,32 @@ identity:
   author: socialecho-net
   label:
     en_US: Get OSS Upload URL
+    zh_Hans: 获取 OSS 上传地址
 description:
   human:
     en_US: >-
-      Get a presigned OSS upload URL for a file. Required content_type must match the file you will upload.
-      After upload, use the returned file URL in publish attachments.
+      Get a presigned OSS upload URL. Required content_type (MIME) must match the file you will upload. Use the returned
+      file URL in publish attachments.
+    zh_Hans: >-
+      获取文件上传 OSS 的地址。body 必传 content_type，且与实际上传文件类型一致。上传后把文件 URL
+      用于发布接口的 attachments 等（见帮助中心 / OpenAPI）。
   llm: >-
-    Get SocialEcho OSS upload URL for media. Required content_type (MIME) must be exactly one of the allowed values.
-    Allowed images: image/jpeg, image/jpg, image/png, image/gif, image/webp, image/bmp.
-    Allowed videos: video/mp4, video/avi, video/mov, video/wmv, video/flv, video/webm, video/mkv, video/3gp, video/quicktime.
+    GET /v1/upload/url with JSON body { "content_type": "<MIME>" }.
+    Allowed image MIME: image/jpeg, image/jpg, image/png, image/gif, image/webp, image/bmp.
+    Allowed video MIME: video/mp4, video/avi, video/mov, video/wmv, video/flv, video/webm, video/mkv, video/3gp, video/quicktime.
+    必填 content_type 白名单如上；与实际上传文件一致。中文说明同左。
 parameters:
   - name: content_type
     type: string
     required: true
     label:
       en_US: Content type (MIME)
+      zh_Hans: 文件类型（MIME）
     human_description:
-      en_US: MIME type matching the file to upload. Must be an allowed image or video type.
+      en_US: MIME type matching the file to upload. Must be an allowlisted type.
+      zh_Hans: 与实际上传文件完全一致的 MIME，必须在白名单内。
     llm_description: >-
-      Required. Exact MIME string, e.g. image/png or video/mp4. Allowed list: image/jpeg, image/jpg, image/png,
-      image/gif, image/webp, image/bmp, video/mp4, video/avi, video/mov, video/wmv, video/flv, video/webm,
-      video/mkv, video/3gp, video/quicktime.
+      Required MIME string from allowlist, e.g. image/png, video/mp4. 从白名单选精确字符串。
     form: llm
 extra:
   python:

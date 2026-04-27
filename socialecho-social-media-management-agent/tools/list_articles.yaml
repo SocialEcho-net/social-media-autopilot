@@ -3,29 +3,36 @@ identity:
   author: socialecho-net
   label:
     en_US: List Articles
+    zh_Hans: 贴文列表
 description:
   human:
     en_US: Query SocialEcho article list by page and account IDs.
+    zh_Hans: 按页查询贴文；可限定一个或多个社媒 account_id（逗号分隔，接口中转为整型数组）。
   llm: >-
-    Query article list. Optional account_ids as comma-separated IDs (e.g. 163956,163955,28); the API receives them as an integer array.
+    Query article list. Optional account_ids as CSV (e.g. 163956,163955,28); API sends integer array in JSON body.
+    贴文列表；account_ids 逗号分隔，API 内为整型数组。
 parameters:
   - name: page
     type: number
     required: false
     label:
       en_US: Page
+      zh_Hans: 页码
     human_description:
       en_US: Page number. Starts from 1.
-    llm_description: Page number, starting from 1.
+      zh_Hans: 页码，从 1 开始。
+    llm_description: Page number from 1. 页码从 1 开始。
     form: llm
   - name: account_ids
     type: string
     required: false
     label:
       en_US: Account IDs (CSV)
+      zh_Hans: 社媒账号 ID（逗号分隔）
     human_description:
       en_US: Comma-separated account IDs, for example 163956,163955,28.
-    llm_description: Comma-separated account IDs, such as 163956,163955,28.
+      zh_Hans: 多个 ID 用英文逗号分隔，如 163956,163955,28。
+    llm_description: Comma-separated account_id list. 英文逗号分隔的社媒 account_id，可留空。
     form: llm
 extra:
   python:

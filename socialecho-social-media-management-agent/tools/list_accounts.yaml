@@ -3,28 +3,34 @@ identity:
   author: socialecho-net
   label:
     en_US: List Accounts
+    zh_Hans: 账号列表
 description:
   human:
     en_US: Query SocialEcho account list with pagination and account type filtering.
-  llm: Query the account list. Use type=1 for owned accounts and type=2 for competitor accounts.
+    zh_Hans: 分页查询 SocialEcho 已接入的社媒账号列表，可按授权账号/竞品账号筛选。
+  llm: Query the account list. type=1 owned accounts, type=2 competitor accounts. 查询社媒账号列表，支持分页与类型筛选。
 parameters:
   - name: page
     type: number
     required: false
     label:
       en_US: Page
+      zh_Hans: 页码
     human_description:
       en_US: Page number. Starts from 1.
-    llm_description: Page number, starting from 1.
+      zh_Hans: 页码，从 1 开始。
+    llm_description: Page number, starting from 1. 从 1 起的页码。
     form: llm
   - name: type
     type: number
     required: false
     label:
       en_US: Account Type
+      zh_Hans: 账号类型
     human_description:
       en_US: 1 means owned account, 2 means competitor account.
-    llm_description: Account type. 1 for owned account, 2 for competitor account.
+      zh_Hans: 1 表示授权/自有账号，2 表示竞品账号。
+    llm_description: 1=owned, 2=competitor. 1=授权账号，2=竞品账号。
     form: llm
 extra:
   python:

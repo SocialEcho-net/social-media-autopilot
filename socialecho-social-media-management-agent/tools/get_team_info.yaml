@@ -3,10 +3,12 @@ identity:
   author: socialecho-net
   label:
     en_US: Get Team Info
+    zh_Hans: 获取团队信息
 description:
   human:
     en_US: Get team info accessible by the current SocialEcho API key.
-  llm: Get the team information currently accessible by the configured SocialEcho API key.
+    zh_Hans: 获取当前 API Key 可访问的 SocialEcho 团队信息。
+  llm: Get the team information currently accessible by the configured SocialEcho API key (GET /v1/team). 获取当前凭据可访问的 SocialEcho 团队信息。
 parameters: []
 extra:
   python:

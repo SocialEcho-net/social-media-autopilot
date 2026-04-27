@@ -1,11 +1,17 @@
-version: 0.1.2
+version: 0.1.3
 type: plugin
 author: socialecho-net
 name: socialecho-social-media-management-agent
 label:
   en_US: SocialEcho Social Media Management Agent
+  zh_Hans: SocialEcho 社媒管理工具
 description:
-  en_US: SocialEcho API tools for team, accounts, articles, reports, and OSS upload presign (GET+JSON body, content_type).
+  en_US: >-
+    SocialEcho public API toolset: team, social accounts, posts, analytics reports, and OSS presigned upload
+    (GET+JSON, content_type allowlist). For Dify agents and workflows.
+  zh_Hans: >-
+    对接 SocialEcho 开放 API：团队信息、社媒账号、贴文、数据报表、获取 OSS 上传地址等（GET+JSON、上传需 content_type 白名单）。
+    适用于 Dify 工作流与 Agent。
 icon: icon.svg
 icon_dark: icon-dark.svg
 resource:
@@ -17,7 +23,7 @@ plugins:
   tools:
     - provider/socialecho-social-media-management-agent.yaml
 meta:
-  version: 0.1.2
+  version: 0.1.3
   arch:
     - amd64
     - arm64
@@ -26,6 +32,6 @@ meta:
     version: "3.12"
     entrypoint: main
   minimum_dify_version: 1.0.0
-created_at: "2026-04-17T14:18:59.548527+08:00"
+created_at: "2026-04-20T12:00:00+08:00"
 privacy: PRIVACY.md
 verified: false

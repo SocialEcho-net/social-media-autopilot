@@ -3,8 +3,13 @@ identity:
   name: socialecho-social-media-management-agent
   label:
     en_US: SocialEcho Social Media Management Agent
+    zh_Hans: SocialEcho 社媒管理工具
   description:
-    en_US: SocialEcho API tools for team, accounts, articles, reports, and OSS upload presign (content_type).
+    en_US: >-
+      SocialEcho API tools for team, accounts, articles, reports, and OSS upload presign (content_type allowlist;
+      requests use GET with JSON body as per API).
+    zh_Hans: >-
+      提供团队、社媒账号、贴文、报表、OSS 上传地址等工具；上传需按文档填写 content_type。接口为 GET+JSON 请求体，与线上一致。
   icon: icon.svg
 
 credentials_for_provider:
@@ -13,19 +18,25 @@ credentials_for_provider:
     required: true
     label:
       en_US: SocialEcho API Key
+      zh_Hans: SocialEcho API Key
     placeholder:
       en_US: Please input your Team API Key (se_xxx)
+      zh_Hans: 请输入团队 API Key（se_ 开头）
     help:
       en_US: Create your Team API Key in SocialEcho Team Management.
+      zh_Hans: 在 SocialEcho 控制台「团队管理」中创建团队 API Key。
   x_lang:
     type: text-input
     required: false
     label:
       en_US: X-Lang (Optional)
+      zh_Hans: X-Lang（可选）
     placeholder:
       en_US: zh_CN or en
+      zh_Hans: zh_CN 或 en
     help:
       en_US: Response language. Default is zh_CN if omitted.
+      zh_Hans: 返回语言。不填时由服务端默认（多为 zh_CN）。
 
 tools:
   - tools/get_team_info.yaml

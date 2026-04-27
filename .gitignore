@@ -1,0 +1,10 @@
+.pytest_cache/
+__pycache__/
+.venv/
+venv/
+.deps/
+.env
+reports/
+
+# Dify plugin build output (dify plugin package)
+*.difypkg
