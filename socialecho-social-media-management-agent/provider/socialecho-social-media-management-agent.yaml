@@ -1,0 +1,39 @@
+identity:
+  author: socialecho-net
+  name: socialecho-social-media-management-agent
+  label:
+    en_US: SocialEcho Social Media Management Agent
+  description:
+    en_US: SocialEcho API tools for team, accounts, articles, reports, and OSS upload presign (content_type).
+  icon: icon.svg
+
+credentials_for_provider:
+  api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: SocialEcho API Key
+    placeholder:
+      en_US: Please input your Team API Key (se_xxx)
+    help:
+      en_US: Create your Team API Key in SocialEcho Team Management.
+  x_lang:
+    type: text-input
+    required: false
+    label:
+      en_US: X-Lang (Optional)
+    placeholder:
+      en_US: zh_CN or en
+    help:
+      en_US: Response language. Default is zh_CN if omitted.
+
+tools:
+  - tools/get_team_info.yaml
+  - tools/list_accounts.yaml
+  - tools/list_articles.yaml
+  - tools/get_report.yaml
+  - tools/get_upload_url.yaml
+
+extra:
+  python:
+    source: provider/socialecho-social-media-management-agent.py

@@ -1,0 +1,32 @@
+identity:
+  name: list_articles
+  author: socialecho-net
+  label:
+    en_US: List Articles
+description:
+  human:
+    en_US: Query SocialEcho article list by page and account IDs.
+  llm: >-
+    Query article list. Optional account_ids as comma-separated IDs (e.g. 163956,163955,28); the API receives them as an integer array.
+parameters:
+  - name: page
+    type: number
+    required: false
+    label:
+      en_US: Page
+    human_description:
+      en_US: Page number. Starts from 1.
+    llm_description: Page number, starting from 1.
+    form: llm
+  - name: account_ids
+    type: string
+    required: false
+    label:
+      en_US: Account IDs (CSV)
+    human_description:
+      en_US: Comma-separated account IDs, for example 163956,163955,28.
+    llm_description: Comma-separated account IDs, such as 163956,163955,28.
+    form: llm
+extra:
+  python:
+    source: tools/list_articles.py

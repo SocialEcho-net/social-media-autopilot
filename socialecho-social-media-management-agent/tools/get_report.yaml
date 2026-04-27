@@ -1,0 +1,58 @@
+identity:
+  name: get_report
+  author: socialecho-net
+  label:
+    en_US: Get Report
+description:
+  human:
+    en_US: Query SocialEcho report metrics within a date range, with optional grouping.
+  llm: Query report data in a date range. Required parameters are start_date and end_date in YYYY-MM-DD format.
+parameters:
+  - name: start_date
+    type: string
+    required: true
+    label:
+      en_US: Start Date
+    human_description:
+      en_US: Start date in YYYY-MM-DD format.
+    llm_description: Start date in YYYY-MM-DD format.
+    form: llm
+  - name: end_date
+    type: string
+    required: true
+    label:
+      en_US: End Date
+    human_description:
+      en_US: End date in YYYY-MM-DD format.
+    llm_description: End date in YYYY-MM-DD format.
+    form: llm
+  - name: account_ids
+    type: string
+    required: false
+    label:
+      en_US: Account IDs (CSV)
+    human_description:
+      en_US: Comma-separated account IDs, for example 163956,163955,28.
+    llm_description: Comma-separated account IDs. Leave empty for all accessible accounts.
+    form: llm
+  - name: time_type
+    type: number
+    required: false
+    label:
+      en_US: Time Type
+    human_description:
+      en_US: 1 for posts created in range, 2 for all historical posts visible in range.
+    llm_description: Time type. 1 for newly created posts in range, 2 for all visible historical posts.
+    form: llm
+  - name: group
+    type: string
+    required: false
+    label:
+      en_US: Group By
+    human_description:
+      en_US: Group by day, app, account, or empty for totals.
+    llm_description: Group dimension. Use day, app, account, or empty string.
+    form: llm
+extra:
+  python:
+    source: tools/get_report.py

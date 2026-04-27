@@ -1,0 +1,31 @@
+identity:
+  name: list_accounts
+  author: socialecho-net
+  label:
+    en_US: List Accounts
+description:
+  human:
+    en_US: Query SocialEcho account list with pagination and account type filtering.
+  llm: Query the account list. Use type=1 for owned accounts and type=2 for competitor accounts.
+parameters:
+  - name: page
+    type: number
+    required: false
+    label:
+      en_US: Page
+    human_description:
+      en_US: Page number. Starts from 1.
+    llm_description: Page number, starting from 1.
+    form: llm
+  - name: type
+    type: number
+    required: false
+    label:
+      en_US: Account Type
+    human_description:
+      en_US: 1 means owned account, 2 means competitor account.
+    llm_description: Account type. 1 for owned account, 2 for competitor account.
+    form: llm
+extra:
+  python:
+    source: tools/list_accounts.py

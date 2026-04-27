@@ -1,0 +1,30 @@
+identity:
+  name: get_upload_url
+  author: socialecho-net
+  label:
+    en_US: Get OSS Upload URL
+description:
+  human:
+    en_US: >-
+      Get a presigned OSS upload URL for a file. Required content_type must match the file you will upload.
+      After upload, use the returned file URL in publish attachments.
+  llm: >-
+    Get SocialEcho OSS upload URL for media. Required content_type (MIME) must be exactly one of the allowed values.
+    Allowed images: image/jpeg, image/jpg, image/png, image/gif, image/webp, image/bmp.
+    Allowed videos: video/mp4, video/avi, video/mov, video/wmv, video/flv, video/webm, video/mkv, video/3gp, video/quicktime.
+parameters:
+  - name: content_type
+    type: string
+    required: true
+    label:
+      en_US: Content type (MIME)
+    human_description:
+      en_US: MIME type matching the file to upload. Must be an allowed image or video type.
+    llm_description: >-
+      Required. Exact MIME string, e.g. image/png or video/mp4. Allowed list: image/jpeg, image/jpg, image/png,
+      image/gif, image/webp, image/bmp, video/mp4, video/avi, video/mov, video/wmv, video/flv, video/webm,
+      video/mkv, video/3gp, video/quicktime.
+    form: llm
+extra:
+  python:
+    source: tools/get_upload_url.py

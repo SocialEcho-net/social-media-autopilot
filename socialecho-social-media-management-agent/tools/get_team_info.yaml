@@ -1,0 +1,13 @@
+identity:
+  name: get_team_info
+  author: socialecho-net
+  label:
+    en_US: Get Team Info
+description:
+  human:
+    en_US: Get team info accessible by the current SocialEcho API key.
+  llm: Get the team information currently accessible by the configured SocialEcho API key.
+parameters: []
+extra:
+  python:
+    source: tools/get_team_info.py
