@@ -1,39 +1,39 @@
 ## SocialEcho Social Media Management Agent（Dify 工具插件）
 
 **作者：** socialecho-net  
-**当前版本（manifest）：** 0.1.3  
+**当前版本（manifest）：** 0.1.4  
 **类型：** Tool Plugin
 
-面向 **Dify** 工作流与 Agent 的 **SocialEcho 开放 API** 工具集，请求发往生产环境 `https://api.socialecho.net`，行为与仓库内 `socialEchoApidocs_cn.md` / OpenAPI 一致。
+与 `socialEchoApidocs_cn.md` 中 **§5 接口清单** 对齐，覆盖当前对外 **GET + JSON body** 与 **发布 POST** 能力。
 
-### 工具列表
+### 工具与接口
 
-1. `get_team_info` — `GET /v1/team`  
-2. `list_accounts` — `GET /v1/account`  
-3. `list_articles` — `GET /v1/article`（`account_ids` 为逗号字符串，在 JSON body 中转为**整数数组**）  
-4. `get_report` — `GET /v1/report`（同上）  
-5. `get_upload_url` — `GET /v1/upload/url`（**必填** `content_type` MIME，白名单见工具说明与 OpenAPI 文档）
+| 工具 | 方法 | 路径 |
+|------|------|------|
+| 获取团队信息 | GET | `/v1/team` |
+| 账号列表 | GET | `/v1/account` |
+| 贴文列表 | GET | `/v1/article` |
+| 数据报表 | GET | `/v1/report` |
+| 获取 OSS 上传地址 | GET | `/v1/upload/url`（`content_type` 必填，见工具说明） |
+| Reddit 社区列表 | GET | `/v1/reddit/communities`（`account_id`） |
+| Pinterest 图版列表 | GET | `/v1/pinterest/boards`（`account_id`） |
+| 发布贴文 | **POST** | `/v1/publish/article`（`body_json` 为完整 JSON 对象字符串） |
 
 ### 凭据
 
-- `api_key`：SocialEcho 控制台 **团队 API Key**（`se_` 开头）  
-- `x_lang`：可选，如 `zh_CN`、`en`  
-
-### 请求形态
-
-与线上一致：多数为 **GET + `application/json` 请求体**，**不是**用 Query 传参。
+- `api_key`：团队 API Key（`se_` 开头）  
+- `x_lang`：可选 `zh_CN` / `en`  
 
 ### 成功判定
 
 HTTP `200` 且 JSON `code` 为 `0` 或 `200`。
 
-### 向 Dify Marketplace 发布
+### Marketplace 与隐私
 
-维护与 PR 提交流程见同目录 **[`MARKETPLACE.md`](./MARKETPLACE.md)**（对应[官方指南](https://docs.dify.ai/zh/develop-plugin/publishing/marketplace-listing/release-to-dify-marketplace)）。
+- 上架与 PR 流程见 **[`MARKETPLACE.md`](./MARKETPLACE.md)**。  
+- 隐私说明见 **[`PRIVACY.md`](./PRIVACY.md)**（`manifest` 中 `privacy` 已引用）。
 
-**隐私政策：** [`PRIVACY.md`](./PRIVACY.md)（`manifest` 中 `privacy` 已指向本文件。）
-
-### 开发调试
+### 开发
 
 ```bash
 pip install -r requirements.txt
@@ -48,6 +48,6 @@ python -m main
 dify plugin package ./socialecho-social-media-management-agent
 ```
 
-生成物用于：本地上传安装、或向 [`langgenius/dify-plugins`](https://github.com/langgenius/dify-plugins) 提 PR 以**上架 Marketplace**。
+在**当前工作目录**生成 `socialecho-social-media-management-agent` 对应的 **`.difypkg`**，用于 [dify-plugins](https://github.com/langgenius/dify-plugins) PR 或本地上传安装。
 
-> **ClawHub** 上的 [socialecho-skills 技能包](https://clawhub.ai) 是另一套交付形态（非 `.difypkg`），不要与 Dify 插件包混淆。
+> **ClawHub** 的 Node 技能包在仓库 `socialecho-skills` 目录，与 `.difypkg` 无关。

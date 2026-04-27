@@ -1,0 +1,28 @@
+identity:
+  name: list_pinterest_boards
+  author: socialecho-net
+  label:
+    en_US: List Pinterest Boards
+    zh_Hans: Pinterest 图版列表
+description:
+  human:
+    en_US: List Pinterest boards for a connected account to pick a board (category) when publishing.
+    zh_Hans: 发布 Pinterest 前，根据已绑定账号拉取图版（board）列表，用于选择图版/分类 ID。
+  llm: >-
+    GET /v1/pinterest/boards with JSON body {"account_id": <int>}. Used before publishing Pins.
+    发布 Pin 前选图版；传社媒 account_id。
+parameters:
+  - name: account_id
+    type: number
+    required: true
+    label:
+      en_US: Account ID
+      zh_Hans: 社媒账号 ID
+    human_description:
+      en_US: SocialEcho social account id for the Pinterest connection.
+      zh_Hans: 已授权 Pinterest 的社媒账号在 SocialEcho 中的 id（整数）。
+    llm_description: Required integer account_id for the Pinterest-linked account. 必填社媒 account_id。
+    form: llm
+extra:
+  python:
+    source: tools/list_pinterest_boards.py

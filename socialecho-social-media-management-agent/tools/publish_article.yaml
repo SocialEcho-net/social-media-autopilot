@@ -1,0 +1,36 @@
+identity:
+  name: publish_article
+  author: socialecho-net
+  label:
+    en_US: Publish Post (Cross-Platform)
+    zh_Hans: 发布贴文（跨平台）
+description:
+  human:
+    en_US: >-
+      POST /v1/publish/article. Pass the full request body as one JSON object string (account_id, type, status,
+      extra, attachments, etc. per platform). Prefer uploading media via get_upload_url first, then set attachment URLs.
+    zh_Hans: >-
+      调用 POST /v1/publish/article。将完整请求体以 **一个 JSON 对象字符串** 传入（含 account_id、type、status、extra、attachments
+      等，依平台与 OpenAPI）。建议先通过「获取 OSS 上传地址」上传素材，再填 attachment URL。
+  llm: >-
+    POST /v1/publish/article. Parameter body_json must be a single string containing a JSON object: account_id, type,
+    status, comment, extra, attachments (URLs from OSS upload), etc. See OpenAPI and SocialEcho help center. 完整 JSON
+    字符串，字段以线上 OpenAPI/文档为准。
+parameters:
+  - name: body_json
+    type: string
+    required: true
+    label:
+      en_US: Request body (JSON string)
+      zh_Hans: 请求体（JSON 字符串）
+    human_description:
+      en_US: >-
+        The entire JSON body for publish/article as a string, e.g. {"account_id":1,"type":"post","status":1,...}
+      zh_Hans: 整个发布请求的 JSON，字符串形式。须与 OpenAPI/控制台约定字段一致。
+    llm_description: >-
+      One JSON object as string. Required fields typically include account_id, type, status, extra, attachments.
+      单个 JSON 对象字符串，不要换行用裸换行需转义。必填字段以接口文档为准。
+    form: llm
+extra:
+  python:
+    source: tools/publish_article.py

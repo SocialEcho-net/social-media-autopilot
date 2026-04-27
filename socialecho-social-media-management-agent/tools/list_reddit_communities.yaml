@@ -1,0 +1,28 @@
+identity:
+  name: list_reddit_communities
+  author: socialecho-net
+  label:
+    en_US: List Reddit Communities
+    zh_Hans: Reddit 社区列表
+description:
+  human:
+    en_US: List Subreddits/communities for a connected Reddit account before publishing.
+    zh_Hans: 在发布 Reddit 内容前，根据已绑定的社媒账号查询可选社区/子版块。
+  llm: >-
+    GET /v1/reddit/communities with JSON body {"account_id": <int>}. Requires SocialEcho account_id for Reddit.
+    发布 Reddit 前选社区；传入社媒 account_id（整数）。
+parameters:
+  - name: account_id
+    type: number
+    required: true
+    label:
+      en_US: Account ID
+      zh_Hans: 社媒账号 ID
+    human_description:
+      en_US: SocialEcho social account id for the Reddit connection.
+      zh_Hans: 已授权 Reddit 的社媒账号在 SocialEcho 中的 id（整数）。
+    llm_description: Required integer account_id for the Reddit-linked account. 必填社媒 account_id。
+    form: llm
+extra:
+  python:
+    source: tools/list_reddit_communities.py

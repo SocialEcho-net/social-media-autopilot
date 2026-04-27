@@ -6,10 +6,11 @@ identity:
     zh_Hans: SocialEcho 社媒管理工具
   description:
     en_US: >-
-      SocialEcho API tools for team, accounts, articles, reports, and OSS upload presign (content_type allowlist;
-      requests use GET with JSON body as per API).
+      SocialEcho API tools: team, accounts, posts, reports, OSS presign, Reddit communities, Pinterest boards, and
+      cross-platform publish (GET+JSON for GET routes; POST /v1/publish/article for publish).
     zh_Hans: >-
-      提供团队、社媒账号、贴文、报表、OSS 上传地址等工具；上传需按文档填写 content_type。接口为 GET+JSON 请求体，与线上一致。
+      SocialEcho 开放 API：团队、账号、贴文、报表、OSS 上传、Reddit 社区、Pinterest 图版、跨平台发布等；GET 为 JSON
+      请求体，发布为 POST /v1/publish/article。
   icon: icon.svg
 
 credentials_for_provider:
@@ -44,6 +45,9 @@ tools:
   - tools/list_articles.yaml
   - tools/get_report.yaml
   - tools/get_upload_url.yaml
+  - tools/list_reddit_communities.yaml
+  - tools/list_pinterest_boards.yaml
+  - tools/publish_article.yaml
 
 extra:
   python:
